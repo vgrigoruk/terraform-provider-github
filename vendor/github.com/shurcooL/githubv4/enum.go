@@ -2,6 +2,15 @@
 
 package githubv4
 
+// ActorType represents the actor's type.
+type ActorType string
+
+// The actor's type.
+const (
+	ActorTypeUser ActorType = "USER" // Indicates a user actor.
+	ActorTypeTeam ActorType = "TEAM" // Indicates a team actor.
+)
+
 // AuditLogOrderField represents properties by which Audit Log connections can be ordered.
 type AuditLogOrderField string
 
@@ -34,6 +43,27 @@ const (
 	CheckConclusionStateSkipped        CheckConclusionState = "SKIPPED"         // The check suite or run was skipped.
 	CheckConclusionStateStartupFailure CheckConclusionState = "STARTUP_FAILURE" // The check suite or run has failed at startup.
 	CheckConclusionStateStale          CheckConclusionState = "STALE"           // The check suite or run was marked stale by GitHub. Only GitHub can use this conclusion.
+)
+
+// CheckRunState represents the possible states of a check run in a status rollup.
+type CheckRunState string
+
+// The possible states of a check run in a status rollup.
+const (
+	CheckRunStateActionRequired CheckRunState = "ACTION_REQUIRED" // The check run requires action.
+	CheckRunStateCancelled      CheckRunState = "CANCELLED"       // The check run has been cancelled.
+	CheckRunStateCompleted      CheckRunState = "COMPLETED"       // The check run has been completed.
+	CheckRunStateFailure        CheckRunState = "FAILURE"         // The check run has failed.
+	CheckRunStateInProgress     CheckRunState = "IN_PROGRESS"     // The check run is in progress.
+	CheckRunStateNeutral        CheckRunState = "NEUTRAL"         // The check run was neutral.
+	CheckRunStatePending        CheckRunState = "PENDING"         // The check run is in pending state.
+	CheckRunStateQueued         CheckRunState = "QUEUED"          // The check run has been queued.
+	CheckRunStateSkipped        CheckRunState = "SKIPPED"         // The check run was skipped.
+	CheckRunStateStale          CheckRunState = "STALE"           // The check run was marked stale by GitHub. Only GitHub can use this conclusion.
+	CheckRunStateStartupFailure CheckRunState = "STARTUP_FAILURE" // The check run has failed at startup.
+	CheckRunStateSuccess        CheckRunState = "SUCCESS"         // The check run has succeeded.
+	CheckRunStateTimedOut       CheckRunState = "TIMED_OUT"       // The check run has timed out.
+	CheckRunStateWaiting        CheckRunState = "WAITING"         // The check run is in waiting state.
 )
 
 // CheckRunType represents the possible types of check runs.
@@ -106,6 +136,17 @@ const (
 	CommitContributionOrderFieldCommitCount CommitContributionOrderField = "COMMIT_COUNT" // Order commit contributions by how many commits they represent.
 )
 
+// ComparisonStatus represents the status of a git comparison between two refs.
+type ComparisonStatus string
+
+// The status of a git comparison between two refs.
+const (
+	ComparisonStatusDiverged  ComparisonStatus = "DIVERGED"  // The head ref is both ahead and behind of the base ref, indicating git history has diverged.
+	ComparisonStatusAhead     ComparisonStatus = "AHEAD"     // The head ref is ahead of the base ref.
+	ComparisonStatusBehind    ComparisonStatus = "BEHIND"    // The head ref is behind the base ref.
+	ComparisonStatusIdentical ComparisonStatus = "IDENTICAL" // The head ref and base ref are identical.
+)
+
 // ContributionLevel represents varying levels of contributions from none to many.
 type ContributionLevel string
 
@@ -127,6 +168,23 @@ const (
 	DefaultRepositoryPermissionFieldRead  DefaultRepositoryPermissionField = "READ"  // Can read repos by default.
 	DefaultRepositoryPermissionFieldWrite DefaultRepositoryPermissionField = "WRITE" // Can read and write repos by default.
 	DefaultRepositoryPermissionFieldAdmin DefaultRepositoryPermissionField = "ADMIN" // Can read, write, and administrate repos by default.
+)
+
+// DependencyGraphEcosystem represents the possible ecosystems of a dependency graph package.
+type DependencyGraphEcosystem string
+
+// The possible ecosystems of a dependency graph package.
+const (
+	DependencyGraphEcosystemRubygems DependencyGraphEcosystem = "RUBYGEMS" // Ruby gems hosted at RubyGems.org.
+	DependencyGraphEcosystemNpm      DependencyGraphEcosystem = "NPM"      // JavaScript packages hosted at npmjs.com.
+	DependencyGraphEcosystemPip      DependencyGraphEcosystem = "PIP"      // Python packages hosted at PyPI.org.
+	DependencyGraphEcosystemMaven    DependencyGraphEcosystem = "MAVEN"    // Java artifacts hosted at the Maven central repository.
+	DependencyGraphEcosystemNuget    DependencyGraphEcosystem = "NUGET"    // .NET packages hosted at the NuGet Gallery.
+	DependencyGraphEcosystemComposer DependencyGraphEcosystem = "COMPOSER" // PHP packages hosted at packagist.org.
+	DependencyGraphEcosystemGo       DependencyGraphEcosystem = "GO"       // Go modules.
+	DependencyGraphEcosystemActions  DependencyGraphEcosystem = "ACTIONS"  // GitHub Actions.
+	DependencyGraphEcosystemRust     DependencyGraphEcosystem = "RUST"     // Rust crates.
+	DependencyGraphEcosystemPub      DependencyGraphEcosystem = "PUB"      // Dart packages hosted at pub.dev.
 )
 
 // DeploymentOrderField represents properties by which deployment connections can be ordered.
@@ -205,6 +263,15 @@ const (
 	DiscussionOrderFieldUpdatedAt DiscussionOrderField = "UPDATED_AT" // Order discussions by most recent modification time.
 )
 
+// DiscussionPollOptionOrderField represents properties by which discussion poll option connections can be ordered.
+type DiscussionPollOptionOrderField string
+
+// Properties by which discussion poll option connections can be ordered.
+const (
+	DiscussionPollOptionOrderFieldAuthoredOrder DiscussionPollOptionOrderField = "AUTHORED_ORDER" // Order poll options by the order that the poll author specified when creating the poll.
+	DiscussionPollOptionOrderFieldVoteCount     DiscussionPollOptionOrderField = "VOTE_COUNT"     // Order poll options by the number of votes it has.
+)
+
 // DismissReason represents the possible reasons that a Dependabot alert was dismissed.
 type DismissReason string
 
@@ -232,6 +299,19 @@ type EnterpriseAdministratorRole string
 const (
 	EnterpriseAdministratorRoleOwner          EnterpriseAdministratorRole = "OWNER"           // Represents an owner of the enterprise account.
 	EnterpriseAdministratorRoleBillingManager EnterpriseAdministratorRole = "BILLING_MANAGER" // Represents a billing manager of the enterprise account.
+)
+
+// EnterpriseAllowPrivateRepositoryForkingPolicyValue represents the possible values for the enterprise allow private repository forking policy value.
+type EnterpriseAllowPrivateRepositoryForkingPolicyValue string
+
+// The possible values for the enterprise allow private repository forking policy value.
+const (
+	EnterpriseAllowPrivateRepositoryForkingPolicyValueEnterpriseOrganizations             EnterpriseAllowPrivateRepositoryForkingPolicyValue = "ENTERPRISE_ORGANIZATIONS"               // Members can fork a repository to an organization within this enterprise.
+	EnterpriseAllowPrivateRepositoryForkingPolicyValueSameOrganization                    EnterpriseAllowPrivateRepositoryForkingPolicyValue = "SAME_ORGANIZATION"                      // Members can fork a repository only within the same organization (intra-org).
+	EnterpriseAllowPrivateRepositoryForkingPolicyValueSameOrganizationUserAccounts        EnterpriseAllowPrivateRepositoryForkingPolicyValue = "SAME_ORGANIZATION_USER_ACCOUNTS"        // Members can fork a repository to their user account or within the same organization.
+	EnterpriseAllowPrivateRepositoryForkingPolicyValueEnterpriseOrganizationsUserAccounts EnterpriseAllowPrivateRepositoryForkingPolicyValue = "ENTERPRISE_ORGANIZATIONS_USER_ACCOUNTS" // Members can fork a repository to their enterprise-managed user account or an organization inside this enterprise.
+	EnterpriseAllowPrivateRepositoryForkingPolicyValueUserAccounts                        EnterpriseAllowPrivateRepositoryForkingPolicyValue = "USER_ACCOUNTS"                          // Members can fork a repository to their user account.
+	EnterpriseAllowPrivateRepositoryForkingPolicyValueEverywhere                          EnterpriseAllowPrivateRepositoryForkingPolicyValue = "EVERYWHERE"                             // Members can fork a repository to their user account or an organization, either inside or outside of this enterprise.
 )
 
 // EnterpriseDefaultRepositoryPermissionSettingValue represents the possible values for the enterprise base repository permission setting.
@@ -345,8 +425,9 @@ type EnterpriseUserAccountMembershipRole string
 
 // The possible roles for enterprise membership.
 const (
-	EnterpriseUserAccountMembershipRoleMember EnterpriseUserAccountMembershipRole = "MEMBER" // The user is a member of the enterprise membership.
-	EnterpriseUserAccountMembershipRoleOwner  EnterpriseUserAccountMembershipRole = "OWNER"  // The user is an owner of the enterprise membership.
+	EnterpriseUserAccountMembershipRoleMember       EnterpriseUserAccountMembershipRole = "MEMBER"       // The user is a member of an organization in the enterprise.
+	EnterpriseUserAccountMembershipRoleOwner        EnterpriseUserAccountMembershipRole = "OWNER"        // The user is an owner of an organization in the enterprise.
+	EnterpriseUserAccountMembershipRoleUnaffiliated EnterpriseUserAccountMembershipRole = "UNAFFILIATED" // The user is not an owner of the enterprise, and not a member or owner of any organizations in the enterprise; only for EMU-enabled enterprises.
 )
 
 // EnterpriseUserDeployment represents the possible GitHub Enterprise deployments where this user can exist.
@@ -380,8 +461,9 @@ const (
 	FundingPlatformTidelift        FundingPlatform = "TIDELIFT"         // Tidelift funding platform.
 	FundingPlatformCommunityBridge FundingPlatform = "COMMUNITY_BRIDGE" // Community Bridge funding platform.
 	FundingPlatformLiberapay       FundingPlatform = "LIBERAPAY"        // Liberapay funding platform.
-	FundingPlatformIssuehunt       FundingPlatform = "ISSUEHUNT"        // IssueHunt funding platform.
+	FundingPlatformIssueHunt       FundingPlatform = "ISSUEHUNT"        // IssueHunt funding platform.
 	FundingPlatformOtechie         FundingPlatform = "OTECHIE"          // Otechie funding platform.
+	FundingPlatformLFXCrowdfunding FundingPlatform = "LFX_CROWDFUNDING" // LFX Crowdfunding funding platform.
 	FundingPlatformCustom          FundingPlatform = "CUSTOM"           // Custom funding platform.
 )
 
@@ -466,6 +548,15 @@ const (
 	IpAllowListForInstalledAppsEnabledSettingValueDisabled IpAllowListForInstalledAppsEnabledSettingValue = "DISABLED" // The setting is disabled for the owner.
 )
 
+// IssueClosedStateReason represents the possible state reasons of a closed issue.
+type IssueClosedStateReason string
+
+// The possible state reasons of a closed issue.
+const (
+	IssueClosedStateReasonCompleted  IssueClosedStateReason = "COMPLETED"   // An issue that has been closed as completed.
+	IssueClosedStateReasonNotPlanned IssueClosedStateReason = "NOT_PLANNED" // An issue that has been closed as not planned.
+)
+
 // IssueCommentOrderField represents properties by which issue comment connections can be ordered.
 type IssueCommentOrderField string
 
@@ -491,6 +582,16 @@ type IssueState string
 const (
 	IssueStateOpen   IssueState = "OPEN"   // An issue that is still open.
 	IssueStateClosed IssueState = "CLOSED" // An issue that has been closed.
+)
+
+// IssueStateReason represents the possible state reasons of an issue.
+type IssueStateReason string
+
+// The possible state reasons of an issue.
+const (
+	IssueStateReasonReopened   IssueStateReason = "REOPENED"    // An issue that has been reopened.
+	IssueStateReasonNotPlanned IssueStateReason = "NOT_PLANNED" // An issue that has been closed as not planned.
+	IssueStateReasonCompleted  IssueStateReason = "COMPLETED"   // An issue that has been closed as completed.
 )
 
 // IssueTimelineItemsItemType represents the possible item types found in a timeline.
@@ -559,6 +660,34 @@ const (
 	LockReasonSpam      LockReason = "SPAM"       // The issue or pull request was locked because the conversation was spam.
 )
 
+// MannequinOrderField represents properties by which mannequins can be ordered.
+type MannequinOrderField string
+
+// Properties by which mannequins can be ordered.
+const (
+	MannequinOrderFieldLogin     MannequinOrderField = "LOGIN"      // Order mannequins alphabetically by their source login.
+	MannequinOrderFieldCreatedAt MannequinOrderField = "CREATED_AT" // Order mannequins why when they were created.
+)
+
+// MergeCommitMessage represents the possible default commit messages for merges.
+type MergeCommitMessage string
+
+// The possible default commit messages for merges.
+const (
+	MergeCommitMessagePrTitle MergeCommitMessage = "PR_TITLE" // Default to the pull request's title.
+	MergeCommitMessagePrBody  MergeCommitMessage = "PR_BODY"  // Default to the pull request's body.
+	MergeCommitMessageBlank   MergeCommitMessage = "BLANK"    // Default to a blank commit message.
+)
+
+// MergeCommitTitle represents the possible default commit titles for merges.
+type MergeCommitTitle string
+
+// The possible default commit titles for merges.
+const (
+	MergeCommitTitlePrTitle      MergeCommitTitle = "PR_TITLE"      // Default to the pull request's title.
+	MergeCommitTitleMergeMessage MergeCommitTitle = "MERGE_MESSAGE" // Default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+)
+
 // MergeableState represents whether or not a PullRequest can be merged.
 type MergeableState string
 
@@ -567,6 +696,30 @@ const (
 	MergeableStateMergeable   MergeableState = "MERGEABLE"   // The pull request can be merged.
 	MergeableStateConflicting MergeableState = "CONFLICTING" // The pull request cannot be merged due to merge conflicts.
 	MergeableStateUnknown     MergeableState = "UNKNOWN"     // The mergeability of the pull request is still being calculated.
+)
+
+// MigrationSourceType represents represents the different GitHub Enterprise Importer (GEI) migration sources.
+type MigrationSourceType string
+
+// Represents the different GitHub Enterprise Importer (GEI) migration sources.
+const (
+	MigrationSourceTypeAzureDevOps     MigrationSourceType = "AZURE_DEVOPS"     // An Azure DevOps migration source.
+	MigrationSourceTypeBitbucketServer MigrationSourceType = "BITBUCKET_SERVER" // A Bitbucket Server migration source.
+	MigrationSourceTypeGitHubArchive   MigrationSourceType = "GITHUB_ARCHIVE"   // A GitHub Migration API source.
+)
+
+// MigrationState represents the GitHub Enterprise Importer (GEI) migration state.
+type MigrationState string
+
+// The GitHub Enterprise Importer (GEI) migration state.
+const (
+	MigrationStateNotStarted        MigrationState = "NOT_STARTED"        // The migration has not started.
+	MigrationStateQueued            MigrationState = "QUEUED"             // The migration has been queued.
+	MigrationStateInProgress        MigrationState = "IN_PROGRESS"        // The migration is in progress.
+	MigrationStateSucceeded         MigrationState = "SUCCEEDED"          // The migration has succeeded.
+	MigrationStateFailed            MigrationState = "FAILED"             // The migration has failed.
+	MigrationStatePendingValidation MigrationState = "PENDING_VALIDATION" // The migration needs to have its credentials validated.
+	MigrationStateFailedValidation  MigrationState = "FAILED_VALIDATION"  // The migration has invalid credentials.
 )
 
 // MilestoneOrderField represents properties by which milestone connections can be ordered.
@@ -683,6 +836,7 @@ type OrgRemoveMemberAuditEntryMembershipType string
 
 // The type of membership a user has with an Organization.
 const (
+	OrgRemoveMemberAuditEntryMembershipTypeSuspended           OrgRemoveMemberAuditEntryMembershipType = "SUSPENDED"            // A suspended member.
 	OrgRemoveMemberAuditEntryMembershipTypeDirectMember        OrgRemoveMemberAuditEntryMembershipType = "DIRECT_MEMBER"        // A direct member is a user that is a member of the Organization.
 	OrgRemoveMemberAuditEntryMembershipTypeAdmin               OrgRemoveMemberAuditEntryMembershipType = "ADMIN"                // Organization administrators have full access and can change several settings, including the names of repositories that belong to the Organization and Owners team membership. In addition, organization admins can delete the organization and all of its repositories.
 	OrgRemoveMemberAuditEntryMembershipTypeBillingManager      OrgRemoveMemberAuditEntryMembershipType = "BILLING_MANAGER"      // A billing manager is a user who manages the billing settings for the Organization, such as updating payment information.
@@ -767,6 +921,16 @@ const (
 	OrganizationInvitationRoleReinstate      OrganizationInvitationRole = "REINSTATE"       // The user's previous role will be reinstated.
 )
 
+// OrganizationInvitationSource represents the possible organization invitation sources.
+type OrganizationInvitationSource string
+
+// The possible organization invitation sources.
+const (
+	OrganizationInvitationSourceUnknown OrganizationInvitationSource = "UNKNOWN" // The invitation was sent before this feature was added.
+	OrganizationInvitationSourceMember  OrganizationInvitationSource = "MEMBER"  // The invitation was created from the web interface or from API.
+	OrganizationInvitationSourceSCIM    OrganizationInvitationSource = "SCIM"    // The invitation was created from SCIM.
+)
+
 // OrganizationInvitationType represents the possible organization invitation types.
 type OrganizationInvitationType string
 
@@ -794,6 +958,21 @@ const (
 	OrganizationMembersCanCreateRepositoriesSettingValuePrivate  OrganizationMembersCanCreateRepositoriesSettingValue = "PRIVATE"  // Members will be able to create only private repositories.
 	OrganizationMembersCanCreateRepositoriesSettingValueInternal OrganizationMembersCanCreateRepositoriesSettingValue = "INTERNAL" // Members will be able to create only internal repositories.
 	OrganizationMembersCanCreateRepositoriesSettingValueDisabled OrganizationMembersCanCreateRepositoriesSettingValue = "DISABLED" // Members will not be able to create public or private repositories.
+)
+
+// OrganizationMigrationState represents the Octoshift Organization migration state.
+type OrganizationMigrationState string
+
+// The Octoshift Organization migration state.
+const (
+	OrganizationMigrationStateNotStarted        OrganizationMigrationState = "NOT_STARTED"         // The Octoshift migration has not started.
+	OrganizationMigrationStateQueued            OrganizationMigrationState = "QUEUED"              // The Octoshift migration has been queued.
+	OrganizationMigrationStateInProgress        OrganizationMigrationState = "IN_PROGRESS"         // The Octoshift migration is in progress.
+	OrganizationMigrationStatePreRepoMigration  OrganizationMigrationState = "PRE_REPO_MIGRATION"  // The Octoshift migration is performing pre repository migrations.
+	OrganizationMigrationStateRepoMigration     OrganizationMigrationState = "REPO_MIGRATION"      // The Octoshift org migration is performing repository migrations.
+	OrganizationMigrationStatePostRepoMigration OrganizationMigrationState = "POST_REPO_MIGRATION" // The Octoshift migration is performing post repository migrations.
+	OrganizationMigrationStateSucceeded         OrganizationMigrationState = "SUCCEEDED"           // The Octoshift migration has succeeded.
+	OrganizationMigrationStateFailed            OrganizationMigrationState = "FAILED"              // The Octoshift migration has failed.
 )
 
 // OrganizationOrderField represents properties by which organization connections can be ordered.
@@ -841,6 +1020,19 @@ type PackageVersionOrderField string
 // Properties by which package version connections can be ordered.
 const (
 	PackageVersionOrderFieldCreatedAt PackageVersionOrderField = "CREATED_AT" // Order package versions by creation time.
+)
+
+// PatchStatus represents the possible types of patch statuses.
+type PatchStatus string
+
+// The possible types of patch statuses.
+const (
+	PatchStatusAdded    PatchStatus = "ADDED"    // The file was added. Git status 'A'.
+	PatchStatusDeleted  PatchStatus = "DELETED"  // The file was deleted. Git status 'D'.
+	PatchStatusRenamed  PatchStatus = "RENAMED"  // The file was renamed. Git status 'R'.
+	PatchStatusCopied   PatchStatus = "COPIED"   // The file was copied. Git status 'C'.
+	PatchStatusModified PatchStatus = "MODIFIED" // The file's contents were changed. Git status 'M'.
+	PatchStatusChanged  PatchStatus = "CHANGED"  // The file's type was changed. Git status 'T'.
 )
 
 // PinnableItemType represents represents items that can be pinned to a profile page or dashboard.
@@ -912,17 +1104,6 @@ const (
 	ProjectColumnPurposeDone       ProjectColumnPurpose = "DONE"        // The column contains cards which are complete.
 )
 
-// ProjectNextOrderField represents properties by which the return project can be ordered.
-type ProjectNextOrderField string
-
-// Properties by which the return project can be ordered.
-const (
-	ProjectNextOrderFieldTitle     ProjectNextOrderField = "TITLE"      // The project's title.
-	ProjectNextOrderFieldNumber    ProjectNextOrderField = "NUMBER"     // The project's number.
-	ProjectNextOrderFieldUpdatedAt ProjectNextOrderField = "UPDATED_AT" // The project's date and time of update.
-	ProjectNextOrderFieldCreatedAt ProjectNextOrderField = "CREATED_AT" // The project's date and time of creation.
-)
-
 // ProjectOrderField represents properties by which project connections can be ordered.
 type ProjectOrderField string
 
@@ -951,6 +1132,141 @@ const (
 	ProjectTemplateAutomatedKanbanV2      ProjectTemplate = "AUTOMATED_KANBAN_V2"      // Create a board with v2 triggers to automatically move cards across To do, In progress and Done columns.
 	ProjectTemplateAutomatedReviewsKanban ProjectTemplate = "AUTOMATED_REVIEWS_KANBAN" // Create a board with triggers to automatically move cards across columns with review automation.
 	ProjectTemplateBugTriage              ProjectTemplate = "BUG_TRIAGE"               // Create a board to triage and prioritize bugs with To do, priority, and Done columns.
+)
+
+// ProjectV2CustomFieldType represents the type of a project field.
+type ProjectV2CustomFieldType string
+
+// The type of a project field.
+const (
+	ProjectV2CustomFieldTypeText         ProjectV2CustomFieldType = "TEXT"          // Text.
+	ProjectV2CustomFieldTypeSingleSelect ProjectV2CustomFieldType = "SINGLE_SELECT" // Single Select.
+	ProjectV2CustomFieldTypeNumber       ProjectV2CustomFieldType = "NUMBER"        // Number.
+	ProjectV2CustomFieldTypeDate         ProjectV2CustomFieldType = "DATE"          // Date.
+)
+
+// ProjectV2FieldOrderField represents properties by which project v2 field connections can be ordered.
+type ProjectV2FieldOrderField string
+
+// Properties by which project v2 field connections can be ordered.
+const (
+	ProjectV2FieldOrderFieldPosition  ProjectV2FieldOrderField = "POSITION"   // Order project v2 fields by position.
+	ProjectV2FieldOrderFieldCreatedAt ProjectV2FieldOrderField = "CREATED_AT" // Order project v2 fields by creation time.
+	ProjectV2FieldOrderFieldName      ProjectV2FieldOrderField = "NAME"       // Order project v2 fields by name.
+)
+
+// ProjectV2FieldType represents the type of a project field.
+type ProjectV2FieldType string
+
+// The type of a project field.
+const (
+	ProjectV2FieldTypeAssignees          ProjectV2FieldType = "ASSIGNEES"            // Assignees.
+	ProjectV2FieldTypeLinkedPullRequests ProjectV2FieldType = "LINKED_PULL_REQUESTS" // Linked Pull Requests.
+	ProjectV2FieldTypeReviewers          ProjectV2FieldType = "REVIEWERS"            // Reviewers.
+	ProjectV2FieldTypeLabels             ProjectV2FieldType = "LABELS"               // Labels.
+	ProjectV2FieldTypeMilestone          ProjectV2FieldType = "MILESTONE"            // Milestone.
+	ProjectV2FieldTypeRepository         ProjectV2FieldType = "REPOSITORY"           // Repository.
+	ProjectV2FieldTypeTitle              ProjectV2FieldType = "TITLE"                // Title.
+	ProjectV2FieldTypeText               ProjectV2FieldType = "TEXT"                 // Text.
+	ProjectV2FieldTypeSingleSelect       ProjectV2FieldType = "SINGLE_SELECT"        // Single Select.
+	ProjectV2FieldTypeNumber             ProjectV2FieldType = "NUMBER"               // Number.
+	ProjectV2FieldTypeDate               ProjectV2FieldType = "DATE"                 // Date.
+	ProjectV2FieldTypeIteration          ProjectV2FieldType = "ITERATION"            // Iteration.
+	ProjectV2FieldTypeTracks             ProjectV2FieldType = "TRACKS"               // Tracks.
+	ProjectV2FieldTypeTrackedBy          ProjectV2FieldType = "TRACKED_BY"           // Tracked by.
+)
+
+// ProjectV2ItemFieldValueOrderField represents properties by which project v2 item field value connections can be ordered.
+type ProjectV2ItemFieldValueOrderField string
+
+// Properties by which project v2 item field value connections can be ordered.
+const (
+	ProjectV2ItemFieldValueOrderFieldPosition ProjectV2ItemFieldValueOrderField = "POSITION" // Order project v2 item field values by the their position in the project.
+)
+
+// ProjectV2ItemOrderField represents properties by which project v2 item connections can be ordered.
+type ProjectV2ItemOrderField string
+
+// Properties by which project v2 item connections can be ordered.
+const (
+	ProjectV2ItemOrderFieldPosition ProjectV2ItemOrderField = "POSITION" // Order project v2 items by the their position in the project.
+)
+
+// ProjectV2ItemType represents the type of a project item.
+type ProjectV2ItemType string
+
+// The type of a project item.
+const (
+	ProjectV2ItemTypeIssue       ProjectV2ItemType = "ISSUE"        // Issue.
+	ProjectV2ItemTypePullRequest ProjectV2ItemType = "PULL_REQUEST" // Pull Request.
+	ProjectV2ItemTypeDraftIssue  ProjectV2ItemType = "DRAFT_ISSUE"  // Draft Issue.
+	ProjectV2ItemTypeRedacted    ProjectV2ItemType = "REDACTED"     // Redacted Item.
+)
+
+// ProjectV2OrderField represents properties by which projects can be ordered.
+type ProjectV2OrderField string
+
+// Properties by which projects can be ordered.
+const (
+	ProjectV2OrderFieldTitle     ProjectV2OrderField = "TITLE"      // The project's title.
+	ProjectV2OrderFieldNumber    ProjectV2OrderField = "NUMBER"     // The project's number.
+	ProjectV2OrderFieldUpdatedAt ProjectV2OrderField = "UPDATED_AT" // The project's date and time of update.
+	ProjectV2OrderFieldCreatedAt ProjectV2OrderField = "CREATED_AT" // The project's date and time of creation.
+)
+
+// ProjectV2SingleSelectFieldOptionColor represents the display color of a single-select field option.
+type ProjectV2SingleSelectFieldOptionColor string
+
+// The display color of a single-select field option.
+const (
+	ProjectV2SingleSelectFieldOptionColorGray   ProjectV2SingleSelectFieldOptionColor = "GRAY"   // GRAY.
+	ProjectV2SingleSelectFieldOptionColorBlue   ProjectV2SingleSelectFieldOptionColor = "BLUE"   // BLUE.
+	ProjectV2SingleSelectFieldOptionColorGreen  ProjectV2SingleSelectFieldOptionColor = "GREEN"  // GREEN.
+	ProjectV2SingleSelectFieldOptionColorYellow ProjectV2SingleSelectFieldOptionColor = "YELLOW" // YELLOW.
+	ProjectV2SingleSelectFieldOptionColorOrange ProjectV2SingleSelectFieldOptionColor = "ORANGE" // ORANGE.
+	ProjectV2SingleSelectFieldOptionColorRed    ProjectV2SingleSelectFieldOptionColor = "RED"    // RED.
+	ProjectV2SingleSelectFieldOptionColorPink   ProjectV2SingleSelectFieldOptionColor = "PINK"   // PINK.
+	ProjectV2SingleSelectFieldOptionColorPurple ProjectV2SingleSelectFieldOptionColor = "PURPLE" // PURPLE.
+)
+
+// ProjectV2State represents the possible states of a project v2.
+type ProjectV2State string
+
+// The possible states of a project v2.
+const (
+	ProjectV2StateOpen   ProjectV2State = "OPEN"   // A project v2 that is still open.
+	ProjectV2StateClosed ProjectV2State = "CLOSED" // A project v2 that has been closed.
+)
+
+// ProjectV2ViewLayout represents the layout of a project v2 view.
+type ProjectV2ViewLayout string
+
+// The layout of a project v2 view.
+const (
+	ProjectV2ViewLayoutBoardLayout   ProjectV2ViewLayout = "BOARD_LAYOUT"   // Board layout.
+	ProjectV2ViewLayoutTableLayout   ProjectV2ViewLayout = "TABLE_LAYOUT"   // Table layout.
+	ProjectV2ViewLayoutRoadmapLayout ProjectV2ViewLayout = "ROADMAP_LAYOUT" // Roadmap layout.
+)
+
+// ProjectV2ViewOrderField represents properties by which project v2 view connections can be ordered.
+type ProjectV2ViewOrderField string
+
+// Properties by which project v2 view connections can be ordered.
+const (
+	ProjectV2ViewOrderFieldPosition  ProjectV2ViewOrderField = "POSITION"   // Order project v2 views by position.
+	ProjectV2ViewOrderFieldCreatedAt ProjectV2ViewOrderField = "CREATED_AT" // Order project v2 views by creation time.
+	ProjectV2ViewOrderFieldName      ProjectV2ViewOrderField = "NAME"       // Order project v2 views by name.
+)
+
+// ProjectV2WorkflowsOrderField represents properties by which project workflows can be ordered.
+type ProjectV2WorkflowsOrderField string
+
+// Properties by which project workflows can be ordered.
+const (
+	ProjectV2WorkflowsOrderFieldName      ProjectV2WorkflowsOrderField = "NAME"       // The workflows' name.
+	ProjectV2WorkflowsOrderFieldNumber    ProjectV2WorkflowsOrderField = "NUMBER"     // The workflows' number.
+	ProjectV2WorkflowsOrderFieldUpdatedAt ProjectV2WorkflowsOrderField = "UPDATED_AT" // The workflows' date and time of update.
+	ProjectV2WorkflowsOrderFieldCreatedAt ProjectV2WorkflowsOrderField = "CREATED_AT" // The workflows' date and time of creation.
 )
 
 // PullRequestMergeMethod represents represents available types of methods to use when merging a pull request.
@@ -1054,6 +1370,8 @@ const (
 	PullRequestTimelineItemsItemTypeReviewRequestRemovedEvent         PullRequestTimelineItemsItemType = "REVIEW_REQUEST_REMOVED_EVENT"          // Represents an 'review_request_removed' event on a given pull request.
 	PullRequestTimelineItemsItemTypeReadyForReviewEvent               PullRequestTimelineItemsItemType = "READY_FOR_REVIEW_EVENT"                // Represents a 'ready_for_review' event on a given pull request.
 	PullRequestTimelineItemsItemTypeConvertToDraftEvent               PullRequestTimelineItemsItemType = "CONVERT_TO_DRAFT_EVENT"                // Represents a 'convert_to_draft' event on a given pull request.
+	PullRequestTimelineItemsItemTypeAddedToMergeQueueEvent            PullRequestTimelineItemsItemType = "ADDED_TO_MERGE_QUEUE_EVENT"            // Represents an 'added_to_merge_queue' event on a given pull request.
+	PullRequestTimelineItemsItemTypeRemovedFromMergeQueueEvent        PullRequestTimelineItemsItemType = "REMOVED_FROM_MERGE_QUEUE_EVENT"        // Represents a 'removed_from_merge_queue' event on a given pull request.
 	PullRequestTimelineItemsItemTypeIssueComment                      PullRequestTimelineItemsItemType = "ISSUE_COMMENT"                         // Represents a comment on an Issue.
 	PullRequestTimelineItemsItemTypeCrossReferencedEvent              PullRequestTimelineItemsItemType = "CROSS_REFERENCED_EVENT"                // Represents a mention made by one issue or pull request to another.
 	PullRequestTimelineItemsItemTypeAddedToProjectEvent               PullRequestTimelineItemsItemType = "ADDED_TO_PROJECT_EVENT"                // Represents a 'added_to_project' event on a given issue or pull request.
@@ -1280,8 +1598,7 @@ type RepositoryInvitationOrderField string
 
 // Properties by which repository invitation connections can be ordered.
 const (
-	RepositoryInvitationOrderFieldCreatedAt    RepositoryInvitationOrderField = "CREATED_AT"    // Order repository invitations by creation time.
-	RepositoryInvitationOrderFieldInviteeLogin RepositoryInvitationOrderField = "INVITEE_LOGIN" // Order repository invitations by invitee login.
+	RepositoryInvitationOrderFieldCreatedAt RepositoryInvitationOrderField = "CREATED_AT" // Order repository invitations by creation time.
 )
 
 // RepositoryLockReason represents the possible reasons a given repository could be in a locked state.
@@ -1289,10 +1606,28 @@ type RepositoryLockReason string
 
 // The possible reasons a given repository could be in a locked state.
 const (
-	RepositoryLockReasonMoving    RepositoryLockReason = "MOVING"    // The repository is locked due to a move.
-	RepositoryLockReasonBilling   RepositoryLockReason = "BILLING"   // The repository is locked due to a billing related reason.
-	RepositoryLockReasonRename    RepositoryLockReason = "RENAME"    // The repository is locked due to a rename.
-	RepositoryLockReasonMigrating RepositoryLockReason = "MIGRATING" // The repository is locked due to a migration.
+	RepositoryLockReasonMoving           RepositoryLockReason = "MOVING"            // The repository is locked due to a move.
+	RepositoryLockReasonBilling          RepositoryLockReason = "BILLING"           // The repository is locked due to a billing related reason.
+	RepositoryLockReasonRename           RepositoryLockReason = "RENAME"            // The repository is locked due to a rename.
+	RepositoryLockReasonMigrating        RepositoryLockReason = "MIGRATING"         // The repository is locked due to a migration.
+	RepositoryLockReasonTradeRestriction RepositoryLockReason = "TRADE_RESTRICTION" // The repository is locked due to a trade controls related reason.
+)
+
+// RepositoryMigrationOrderDirection represents possible directions in which to order a list of repository migrations when provided an `orderBy` argument.
+type RepositoryMigrationOrderDirection string
+
+// Possible directions in which to order a list of repository migrations when provided an `orderBy` argument.
+const (
+	RepositoryMigrationOrderDirectionAsc  RepositoryMigrationOrderDirection = "ASC"  // Specifies an ascending order for a given `orderBy` argument.
+	RepositoryMigrationOrderDirectionDesc RepositoryMigrationOrderDirection = "DESC" // Specifies a descending order for a given `orderBy` argument.
+)
+
+// RepositoryMigrationOrderField represents properties by which repository migrations can be ordered.
+type RepositoryMigrationOrderField string
+
+// Properties by which repository migrations can be ordered.
+const (
+	RepositoryMigrationOrderFieldCreatedAt RepositoryMigrationOrderField = "CREATED_AT" // Order mannequins why when they were created.
 )
 
 // RepositoryOrderField represents properties by which repository connections can be ordered.
@@ -1336,6 +1671,25 @@ const (
 	RepositoryVisibilityPrivate  RepositoryVisibility = "PRIVATE"  // The repository is visible only to those with explicit access.
 	RepositoryVisibilityPublic   RepositoryVisibility = "PUBLIC"   // The repository is visible to everyone.
 	RepositoryVisibilityInternal RepositoryVisibility = "INTERNAL" // The repository is visible only to users in the same business.
+)
+
+// RepositoryVulnerabilityAlertDependencyScope represents the possible scopes of an alert's dependency.
+type RepositoryVulnerabilityAlertDependencyScope string
+
+// The possible scopes of an alert's dependency.
+const (
+	RepositoryVulnerabilityAlertDependencyScopeRuntime     RepositoryVulnerabilityAlertDependencyScope = "RUNTIME"     // A dependency that is leveraged during application runtime.
+	RepositoryVulnerabilityAlertDependencyScopeDevelopment RepositoryVulnerabilityAlertDependencyScope = "DEVELOPMENT" // A dependency that is only used in development.
+)
+
+// RepositoryVulnerabilityAlertState represents the possible states of an alert.
+type RepositoryVulnerabilityAlertState string
+
+// The possible states of an alert.
+const (
+	RepositoryVulnerabilityAlertStateOpen      RepositoryVulnerabilityAlertState = "OPEN"      // An alert that is still open.
+	RepositoryVulnerabilityAlertStateFixed     RepositoryVulnerabilityAlertState = "FIXED"     // An alert that has been resolved by a code change.
+	RepositoryVulnerabilityAlertStateDismissed RepositoryVulnerabilityAlertState = "DISMISSED" // An alert that has been manually closed by a user.
 )
 
 // RequestableCheckStatusState represents the possible states that can be requested when creating a check run.
@@ -1401,17 +1755,29 @@ const (
 	SearchTypeDiscussion SearchType = "DISCUSSION" // Returns matching discussions in repositories.
 )
 
+// SecurityAdvisoryClassification represents classification of the advisory.
+type SecurityAdvisoryClassification string
+
+// Classification of the advisory.
+const (
+	SecurityAdvisoryClassificationGeneral SecurityAdvisoryClassification = "GENERAL" // Classification of general advisories.
+	SecurityAdvisoryClassificationMalware SecurityAdvisoryClassification = "MALWARE" // Classification of malware advisories.
+)
+
 // SecurityAdvisoryEcosystem represents the possible ecosystems of a security vulnerability's package.
 type SecurityAdvisoryEcosystem string
 
 // The possible ecosystems of a security vulnerability's package.
 const (
 	SecurityAdvisoryEcosystemComposer SecurityAdvisoryEcosystem = "COMPOSER" // PHP packages hosted at packagist.org.
+	SecurityAdvisoryEcosystemErlang   SecurityAdvisoryEcosystem = "ERLANG"   // Erlang/Elixir packages hosted at hex.pm.
+	SecurityAdvisoryEcosystemActions  SecurityAdvisoryEcosystem = "ACTIONS"  // GitHub Actions.
 	SecurityAdvisoryEcosystemGo       SecurityAdvisoryEcosystem = "GO"       // Go modules.
 	SecurityAdvisoryEcosystemMaven    SecurityAdvisoryEcosystem = "MAVEN"    // Java artifacts hosted at the Maven central repository.
 	SecurityAdvisoryEcosystemNpm      SecurityAdvisoryEcosystem = "NPM"      // JavaScript packages hosted at npmjs.com.
 	SecurityAdvisoryEcosystemNuget    SecurityAdvisoryEcosystem = "NUGET"    // .NET packages hosted at the NuGet Gallery.
 	SecurityAdvisoryEcosystemPip      SecurityAdvisoryEcosystem = "PIP"      // Python packages hosted at PyPI.org.
+	SecurityAdvisoryEcosystemPub      SecurityAdvisoryEcosystem = "PUB"      // Dart packages hosted at pub.dev.
 	SecurityAdvisoryEcosystemRubygems SecurityAdvisoryEcosystem = "RUBYGEMS" // Ruby gems hosted at RubyGems.org.
 	SecurityAdvisoryEcosystemRust     SecurityAdvisoryEcosystem = "RUST"     // Rust crates.
 )
@@ -1451,6 +1817,23 @@ type SecurityVulnerabilityOrderField string
 // Properties by which security vulnerability connections can be ordered.
 const (
 	SecurityVulnerabilityOrderFieldUpdatedAt SecurityVulnerabilityOrderField = "UPDATED_AT" // Order vulnerability by update time.
+)
+
+// SocialAccountProvider represents software or company that hosts social media accounts.
+type SocialAccountProvider string
+
+// Software or company that hosts social media accounts.
+const (
+	SocialAccountProviderGeneric   SocialAccountProvider = "GENERIC"   // Catch-all for social media providers that do not yet have specific handling.
+	SocialAccountProviderFacebook  SocialAccountProvider = "FACEBOOK"  // Social media and networking website.
+	SocialAccountProviderHometown  SocialAccountProvider = "HOMETOWN"  // Fork of Mastodon with a greater focus on local posting.
+	SocialAccountProviderInstagram SocialAccountProvider = "INSTAGRAM" // Social media website with a focus on photo and video sharing.
+	SocialAccountProviderLinkedIn  SocialAccountProvider = "LINKEDIN"  // Professional networking website.
+	SocialAccountProviderMastodon  SocialAccountProvider = "MASTODON"  // Open-source federated microblogging service.
+	SocialAccountProviderReddit    SocialAccountProvider = "REDDIT"    // Social news aggregation and discussion website.
+	SocialAccountProviderTwitch    SocialAccountProvider = "TWITCH"    // Live-streaming service.
+	SocialAccountProviderTwitter   SocialAccountProvider = "TWITTER"   // Microblogging website.
+	SocialAccountProviderYouTube   SocialAccountProvider = "YOUTUBE"   // Online video platform.
 )
 
 // SponsorOrderField represents properties by which sponsor connections can be ordered.
@@ -1502,6 +1885,259 @@ const (
 	SponsorsActivityPeriodAll   SponsorsActivityPeriod = "ALL"   // Don't restrict the activity to any date range, include all activity.
 )
 
+// SponsorsCountryOrRegionCode represents represents countries or regions for billing and residence for a GitHub Sponsors profile.
+type SponsorsCountryOrRegionCode string
+
+// Represents countries or regions for billing and residence for a GitHub Sponsors profile.
+const (
+	SponsorsCountryOrRegionCodeAF SponsorsCountryOrRegionCode = "AF" // Afghanistan.
+	SponsorsCountryOrRegionCodeAX SponsorsCountryOrRegionCode = "AX" // Åland.
+	SponsorsCountryOrRegionCodeAL SponsorsCountryOrRegionCode = "AL" // Albania.
+	SponsorsCountryOrRegionCodeDZ SponsorsCountryOrRegionCode = "DZ" // Algeria.
+	SponsorsCountryOrRegionCodeAS SponsorsCountryOrRegionCode = "AS" // American Samoa.
+	SponsorsCountryOrRegionCodeAD SponsorsCountryOrRegionCode = "AD" // Andorra.
+	SponsorsCountryOrRegionCodeAO SponsorsCountryOrRegionCode = "AO" // Angola.
+	SponsorsCountryOrRegionCodeAI SponsorsCountryOrRegionCode = "AI" // Anguilla.
+	SponsorsCountryOrRegionCodeAQ SponsorsCountryOrRegionCode = "AQ" // Antarctica.
+	SponsorsCountryOrRegionCodeAG SponsorsCountryOrRegionCode = "AG" // Antigua and Barbuda.
+	SponsorsCountryOrRegionCodeAR SponsorsCountryOrRegionCode = "AR" // Argentina.
+	SponsorsCountryOrRegionCodeAM SponsorsCountryOrRegionCode = "AM" // Armenia.
+	SponsorsCountryOrRegionCodeAW SponsorsCountryOrRegionCode = "AW" // Aruba.
+	SponsorsCountryOrRegionCodeAU SponsorsCountryOrRegionCode = "AU" // Australia.
+	SponsorsCountryOrRegionCodeAT SponsorsCountryOrRegionCode = "AT" // Austria.
+	SponsorsCountryOrRegionCodeAZ SponsorsCountryOrRegionCode = "AZ" // Azerbaijan.
+	SponsorsCountryOrRegionCodeBS SponsorsCountryOrRegionCode = "BS" // Bahamas.
+	SponsorsCountryOrRegionCodeBH SponsorsCountryOrRegionCode = "BH" // Bahrain.
+	SponsorsCountryOrRegionCodeBD SponsorsCountryOrRegionCode = "BD" // Bangladesh.
+	SponsorsCountryOrRegionCodeBB SponsorsCountryOrRegionCode = "BB" // Barbados.
+	SponsorsCountryOrRegionCodeBY SponsorsCountryOrRegionCode = "BY" // Belarus.
+	SponsorsCountryOrRegionCodeBE SponsorsCountryOrRegionCode = "BE" // Belgium.
+	SponsorsCountryOrRegionCodeBZ SponsorsCountryOrRegionCode = "BZ" // Belize.
+	SponsorsCountryOrRegionCodeBJ SponsorsCountryOrRegionCode = "BJ" // Benin.
+	SponsorsCountryOrRegionCodeBM SponsorsCountryOrRegionCode = "BM" // Bermuda.
+	SponsorsCountryOrRegionCodeBT SponsorsCountryOrRegionCode = "BT" // Bhutan.
+	SponsorsCountryOrRegionCodeBO SponsorsCountryOrRegionCode = "BO" // Bolivia.
+	SponsorsCountryOrRegionCodeBQ SponsorsCountryOrRegionCode = "BQ" // Bonaire, Sint Eustatius and Saba.
+	SponsorsCountryOrRegionCodeBA SponsorsCountryOrRegionCode = "BA" // Bosnia and Herzegovina.
+	SponsorsCountryOrRegionCodeBW SponsorsCountryOrRegionCode = "BW" // Botswana.
+	SponsorsCountryOrRegionCodeBV SponsorsCountryOrRegionCode = "BV" // Bouvet Island.
+	SponsorsCountryOrRegionCodeBR SponsorsCountryOrRegionCode = "BR" // Brazil.
+	SponsorsCountryOrRegionCodeIO SponsorsCountryOrRegionCode = "IO" // British Indian Ocean Territory.
+	SponsorsCountryOrRegionCodeBN SponsorsCountryOrRegionCode = "BN" // Brunei Darussalam.
+	SponsorsCountryOrRegionCodeBG SponsorsCountryOrRegionCode = "BG" // Bulgaria.
+	SponsorsCountryOrRegionCodeBF SponsorsCountryOrRegionCode = "BF" // Burkina Faso.
+	SponsorsCountryOrRegionCodeBI SponsorsCountryOrRegionCode = "BI" // Burundi.
+	SponsorsCountryOrRegionCodeKH SponsorsCountryOrRegionCode = "KH" // Cambodia.
+	SponsorsCountryOrRegionCodeCM SponsorsCountryOrRegionCode = "CM" // Cameroon.
+	SponsorsCountryOrRegionCodeCA SponsorsCountryOrRegionCode = "CA" // Canada.
+	SponsorsCountryOrRegionCodeCV SponsorsCountryOrRegionCode = "CV" // Cape Verde.
+	SponsorsCountryOrRegionCodeKY SponsorsCountryOrRegionCode = "KY" // Cayman Islands.
+	SponsorsCountryOrRegionCodeCF SponsorsCountryOrRegionCode = "CF" // Central African Republic.
+	SponsorsCountryOrRegionCodeTD SponsorsCountryOrRegionCode = "TD" // Chad.
+	SponsorsCountryOrRegionCodeCL SponsorsCountryOrRegionCode = "CL" // Chile.
+	SponsorsCountryOrRegionCodeCN SponsorsCountryOrRegionCode = "CN" // China.
+	SponsorsCountryOrRegionCodeCX SponsorsCountryOrRegionCode = "CX" // Christmas Island.
+	SponsorsCountryOrRegionCodeCC SponsorsCountryOrRegionCode = "CC" // Cocos (Keeling) Islands.
+	SponsorsCountryOrRegionCodeCO SponsorsCountryOrRegionCode = "CO" // Colombia.
+	SponsorsCountryOrRegionCodeKM SponsorsCountryOrRegionCode = "KM" // Comoros.
+	SponsorsCountryOrRegionCodeCG SponsorsCountryOrRegionCode = "CG" // Congo (Brazzaville).
+	SponsorsCountryOrRegionCodeCD SponsorsCountryOrRegionCode = "CD" // Congo (Kinshasa).
+	SponsorsCountryOrRegionCodeCK SponsorsCountryOrRegionCode = "CK" // Cook Islands.
+	SponsorsCountryOrRegionCodeCR SponsorsCountryOrRegionCode = "CR" // Costa Rica.
+	SponsorsCountryOrRegionCodeCI SponsorsCountryOrRegionCode = "CI" // Côte d'Ivoire.
+	SponsorsCountryOrRegionCodeHR SponsorsCountryOrRegionCode = "HR" // Croatia.
+	SponsorsCountryOrRegionCodeCW SponsorsCountryOrRegionCode = "CW" // Curaçao.
+	SponsorsCountryOrRegionCodeCY SponsorsCountryOrRegionCode = "CY" // Cyprus.
+	SponsorsCountryOrRegionCodeCZ SponsorsCountryOrRegionCode = "CZ" // Czech Republic.
+	SponsorsCountryOrRegionCodeDK SponsorsCountryOrRegionCode = "DK" // Denmark.
+	SponsorsCountryOrRegionCodeDJ SponsorsCountryOrRegionCode = "DJ" // Djibouti.
+	SponsorsCountryOrRegionCodeDM SponsorsCountryOrRegionCode = "DM" // Dominica.
+	SponsorsCountryOrRegionCodeDO SponsorsCountryOrRegionCode = "DO" // Dominican Republic.
+	SponsorsCountryOrRegionCodeEC SponsorsCountryOrRegionCode = "EC" // Ecuador.
+	SponsorsCountryOrRegionCodeEG SponsorsCountryOrRegionCode = "EG" // Egypt.
+	SponsorsCountryOrRegionCodeSV SponsorsCountryOrRegionCode = "SV" // El Salvador.
+	SponsorsCountryOrRegionCodeGQ SponsorsCountryOrRegionCode = "GQ" // Equatorial Guinea.
+	SponsorsCountryOrRegionCodeER SponsorsCountryOrRegionCode = "ER" // Eritrea.
+	SponsorsCountryOrRegionCodeEE SponsorsCountryOrRegionCode = "EE" // Estonia.
+	SponsorsCountryOrRegionCodeET SponsorsCountryOrRegionCode = "ET" // Ethiopia.
+	SponsorsCountryOrRegionCodeFK SponsorsCountryOrRegionCode = "FK" // Falkland Islands.
+	SponsorsCountryOrRegionCodeFO SponsorsCountryOrRegionCode = "FO" // Faroe Islands.
+	SponsorsCountryOrRegionCodeFJ SponsorsCountryOrRegionCode = "FJ" // Fiji.
+	SponsorsCountryOrRegionCodeFI SponsorsCountryOrRegionCode = "FI" // Finland.
+	SponsorsCountryOrRegionCodeFR SponsorsCountryOrRegionCode = "FR" // France.
+	SponsorsCountryOrRegionCodeGF SponsorsCountryOrRegionCode = "GF" // French Guiana.
+	SponsorsCountryOrRegionCodePF SponsorsCountryOrRegionCode = "PF" // French Polynesia.
+	SponsorsCountryOrRegionCodeTF SponsorsCountryOrRegionCode = "TF" // French Southern Lands.
+	SponsorsCountryOrRegionCodeGA SponsorsCountryOrRegionCode = "GA" // Gabon.
+	SponsorsCountryOrRegionCodeGM SponsorsCountryOrRegionCode = "GM" // Gambia.
+	SponsorsCountryOrRegionCodeGE SponsorsCountryOrRegionCode = "GE" // Georgia.
+	SponsorsCountryOrRegionCodeDE SponsorsCountryOrRegionCode = "DE" // Germany.
+	SponsorsCountryOrRegionCodeGH SponsorsCountryOrRegionCode = "GH" // Ghana.
+	SponsorsCountryOrRegionCodeGI SponsorsCountryOrRegionCode = "GI" // Gibraltar.
+	SponsorsCountryOrRegionCodeGR SponsorsCountryOrRegionCode = "GR" // Greece.
+	SponsorsCountryOrRegionCodeGL SponsorsCountryOrRegionCode = "GL" // Greenland.
+	SponsorsCountryOrRegionCodeGD SponsorsCountryOrRegionCode = "GD" // Grenada.
+	SponsorsCountryOrRegionCodeGP SponsorsCountryOrRegionCode = "GP" // Guadeloupe.
+	SponsorsCountryOrRegionCodeGU SponsorsCountryOrRegionCode = "GU" // Guam.
+	SponsorsCountryOrRegionCodeGT SponsorsCountryOrRegionCode = "GT" // Guatemala.
+	SponsorsCountryOrRegionCodeGG SponsorsCountryOrRegionCode = "GG" // Guernsey.
+	SponsorsCountryOrRegionCodeGN SponsorsCountryOrRegionCode = "GN" // Guinea.
+	SponsorsCountryOrRegionCodeGW SponsorsCountryOrRegionCode = "GW" // Guinea-Bissau.
+	SponsorsCountryOrRegionCodeGY SponsorsCountryOrRegionCode = "GY" // Guyana.
+	SponsorsCountryOrRegionCodeHT SponsorsCountryOrRegionCode = "HT" // Haiti.
+	SponsorsCountryOrRegionCodeHM SponsorsCountryOrRegionCode = "HM" // Heard and McDonald Islands.
+	SponsorsCountryOrRegionCodeHN SponsorsCountryOrRegionCode = "HN" // Honduras.
+	SponsorsCountryOrRegionCodeHK SponsorsCountryOrRegionCode = "HK" // Hong Kong.
+	SponsorsCountryOrRegionCodeHU SponsorsCountryOrRegionCode = "HU" // Hungary.
+	SponsorsCountryOrRegionCodeIS SponsorsCountryOrRegionCode = "IS" // Iceland.
+	SponsorsCountryOrRegionCodeIN SponsorsCountryOrRegionCode = "IN" // India.
+	SponsorsCountryOrRegionCodeID SponsorsCountryOrRegionCode = "ID" // Indonesia.
+	SponsorsCountryOrRegionCodeIR SponsorsCountryOrRegionCode = "IR" // Iran.
+	SponsorsCountryOrRegionCodeIQ SponsorsCountryOrRegionCode = "IQ" // Iraq.
+	SponsorsCountryOrRegionCodeIE SponsorsCountryOrRegionCode = "IE" // Ireland.
+	SponsorsCountryOrRegionCodeIM SponsorsCountryOrRegionCode = "IM" // Isle of Man.
+	SponsorsCountryOrRegionCodeIL SponsorsCountryOrRegionCode = "IL" // Israel.
+	SponsorsCountryOrRegionCodeIT SponsorsCountryOrRegionCode = "IT" // Italy.
+	SponsorsCountryOrRegionCodeJM SponsorsCountryOrRegionCode = "JM" // Jamaica.
+	SponsorsCountryOrRegionCodeJP SponsorsCountryOrRegionCode = "JP" // Japan.
+	SponsorsCountryOrRegionCodeJE SponsorsCountryOrRegionCode = "JE" // Jersey.
+	SponsorsCountryOrRegionCodeJO SponsorsCountryOrRegionCode = "JO" // Jordan.
+	SponsorsCountryOrRegionCodeKZ SponsorsCountryOrRegionCode = "KZ" // Kazakhstan.
+	SponsorsCountryOrRegionCodeKE SponsorsCountryOrRegionCode = "KE" // Kenya.
+	SponsorsCountryOrRegionCodeKI SponsorsCountryOrRegionCode = "KI" // Kiribati.
+	SponsorsCountryOrRegionCodeKR SponsorsCountryOrRegionCode = "KR" // Korea, South.
+	SponsorsCountryOrRegionCodeKW SponsorsCountryOrRegionCode = "KW" // Kuwait.
+	SponsorsCountryOrRegionCodeKG SponsorsCountryOrRegionCode = "KG" // Kyrgyzstan.
+	SponsorsCountryOrRegionCodeLA SponsorsCountryOrRegionCode = "LA" // Laos.
+	SponsorsCountryOrRegionCodeLV SponsorsCountryOrRegionCode = "LV" // Latvia.
+	SponsorsCountryOrRegionCodeLB SponsorsCountryOrRegionCode = "LB" // Lebanon.
+	SponsorsCountryOrRegionCodeLS SponsorsCountryOrRegionCode = "LS" // Lesotho.
+	SponsorsCountryOrRegionCodeLR SponsorsCountryOrRegionCode = "LR" // Liberia.
+	SponsorsCountryOrRegionCodeLY SponsorsCountryOrRegionCode = "LY" // Libya.
+	SponsorsCountryOrRegionCodeLI SponsorsCountryOrRegionCode = "LI" // Liechtenstein.
+	SponsorsCountryOrRegionCodeLT SponsorsCountryOrRegionCode = "LT" // Lithuania.
+	SponsorsCountryOrRegionCodeLU SponsorsCountryOrRegionCode = "LU" // Luxembourg.
+	SponsorsCountryOrRegionCodeMO SponsorsCountryOrRegionCode = "MO" // Macau.
+	SponsorsCountryOrRegionCodeMK SponsorsCountryOrRegionCode = "MK" // Macedonia.
+	SponsorsCountryOrRegionCodeMG SponsorsCountryOrRegionCode = "MG" // Madagascar.
+	SponsorsCountryOrRegionCodeMW SponsorsCountryOrRegionCode = "MW" // Malawi.
+	SponsorsCountryOrRegionCodeMY SponsorsCountryOrRegionCode = "MY" // Malaysia.
+	SponsorsCountryOrRegionCodeMV SponsorsCountryOrRegionCode = "MV" // Maldives.
+	SponsorsCountryOrRegionCodeML SponsorsCountryOrRegionCode = "ML" // Mali.
+	SponsorsCountryOrRegionCodeMT SponsorsCountryOrRegionCode = "MT" // Malta.
+	SponsorsCountryOrRegionCodeMH SponsorsCountryOrRegionCode = "MH" // Marshall Islands.
+	SponsorsCountryOrRegionCodeMQ SponsorsCountryOrRegionCode = "MQ" // Martinique.
+	SponsorsCountryOrRegionCodeMR SponsorsCountryOrRegionCode = "MR" // Mauritania.
+	SponsorsCountryOrRegionCodeMU SponsorsCountryOrRegionCode = "MU" // Mauritius.
+	SponsorsCountryOrRegionCodeYT SponsorsCountryOrRegionCode = "YT" // Mayotte.
+	SponsorsCountryOrRegionCodeMX SponsorsCountryOrRegionCode = "MX" // Mexico.
+	SponsorsCountryOrRegionCodeFM SponsorsCountryOrRegionCode = "FM" // Micronesia.
+	SponsorsCountryOrRegionCodeMD SponsorsCountryOrRegionCode = "MD" // Moldova.
+	SponsorsCountryOrRegionCodeMC SponsorsCountryOrRegionCode = "MC" // Monaco.
+	SponsorsCountryOrRegionCodeMN SponsorsCountryOrRegionCode = "MN" // Mongolia.
+	SponsorsCountryOrRegionCodeME SponsorsCountryOrRegionCode = "ME" // Montenegro.
+	SponsorsCountryOrRegionCodeMS SponsorsCountryOrRegionCode = "MS" // Montserrat.
+	SponsorsCountryOrRegionCodeMA SponsorsCountryOrRegionCode = "MA" // Morocco.
+	SponsorsCountryOrRegionCodeMZ SponsorsCountryOrRegionCode = "MZ" // Mozambique.
+	SponsorsCountryOrRegionCodeMM SponsorsCountryOrRegionCode = "MM" // Myanmar.
+	SponsorsCountryOrRegionCodeNA SponsorsCountryOrRegionCode = "NA" // Namibia.
+	SponsorsCountryOrRegionCodeNR SponsorsCountryOrRegionCode = "NR" // Nauru.
+	SponsorsCountryOrRegionCodeNP SponsorsCountryOrRegionCode = "NP" // Nepal.
+	SponsorsCountryOrRegionCodeNL SponsorsCountryOrRegionCode = "NL" // Netherlands.
+	SponsorsCountryOrRegionCodeNC SponsorsCountryOrRegionCode = "NC" // New Caledonia.
+	SponsorsCountryOrRegionCodeNZ SponsorsCountryOrRegionCode = "NZ" // New Zealand.
+	SponsorsCountryOrRegionCodeNI SponsorsCountryOrRegionCode = "NI" // Nicaragua.
+	SponsorsCountryOrRegionCodeNE SponsorsCountryOrRegionCode = "NE" // Niger.
+	SponsorsCountryOrRegionCodeNG SponsorsCountryOrRegionCode = "NG" // Nigeria.
+	SponsorsCountryOrRegionCodeNU SponsorsCountryOrRegionCode = "NU" // Niue.
+	SponsorsCountryOrRegionCodeNF SponsorsCountryOrRegionCode = "NF" // Norfolk Island.
+	SponsorsCountryOrRegionCodeMP SponsorsCountryOrRegionCode = "MP" // Northern Mariana Islands.
+	SponsorsCountryOrRegionCodeNO SponsorsCountryOrRegionCode = "NO" // Norway.
+	SponsorsCountryOrRegionCodeOM SponsorsCountryOrRegionCode = "OM" // Oman.
+	SponsorsCountryOrRegionCodePK SponsorsCountryOrRegionCode = "PK" // Pakistan.
+	SponsorsCountryOrRegionCodePW SponsorsCountryOrRegionCode = "PW" // Palau.
+	SponsorsCountryOrRegionCodePS SponsorsCountryOrRegionCode = "PS" // Palestine.
+	SponsorsCountryOrRegionCodePA SponsorsCountryOrRegionCode = "PA" // Panama.
+	SponsorsCountryOrRegionCodePG SponsorsCountryOrRegionCode = "PG" // Papua New Guinea.
+	SponsorsCountryOrRegionCodePY SponsorsCountryOrRegionCode = "PY" // Paraguay.
+	SponsorsCountryOrRegionCodePE SponsorsCountryOrRegionCode = "PE" // Peru.
+	SponsorsCountryOrRegionCodePH SponsorsCountryOrRegionCode = "PH" // Philippines.
+	SponsorsCountryOrRegionCodePN SponsorsCountryOrRegionCode = "PN" // Pitcairn.
+	SponsorsCountryOrRegionCodePL SponsorsCountryOrRegionCode = "PL" // Poland.
+	SponsorsCountryOrRegionCodePT SponsorsCountryOrRegionCode = "PT" // Portugal.
+	SponsorsCountryOrRegionCodePR SponsorsCountryOrRegionCode = "PR" // Puerto Rico.
+	SponsorsCountryOrRegionCodeQA SponsorsCountryOrRegionCode = "QA" // Qatar.
+	SponsorsCountryOrRegionCodeRE SponsorsCountryOrRegionCode = "RE" // Reunion.
+	SponsorsCountryOrRegionCodeRO SponsorsCountryOrRegionCode = "RO" // Romania.
+	SponsorsCountryOrRegionCodeRU SponsorsCountryOrRegionCode = "RU" // Russian Federation.
+	SponsorsCountryOrRegionCodeRW SponsorsCountryOrRegionCode = "RW" // Rwanda.
+	SponsorsCountryOrRegionCodeBL SponsorsCountryOrRegionCode = "BL" // Saint Barthélemy.
+	SponsorsCountryOrRegionCodeSH SponsorsCountryOrRegionCode = "SH" // Saint Helena.
+	SponsorsCountryOrRegionCodeKN SponsorsCountryOrRegionCode = "KN" // Saint Kitts and Nevis.
+	SponsorsCountryOrRegionCodeLC SponsorsCountryOrRegionCode = "LC" // Saint Lucia.
+	SponsorsCountryOrRegionCodeMF SponsorsCountryOrRegionCode = "MF" // Saint Martin (French part).
+	SponsorsCountryOrRegionCodePM SponsorsCountryOrRegionCode = "PM" // Saint Pierre and Miquelon.
+	SponsorsCountryOrRegionCodeVC SponsorsCountryOrRegionCode = "VC" // Saint Vincent and the Grenadines.
+	SponsorsCountryOrRegionCodeWS SponsorsCountryOrRegionCode = "WS" // Samoa.
+	SponsorsCountryOrRegionCodeSM SponsorsCountryOrRegionCode = "SM" // San Marino.
+	SponsorsCountryOrRegionCodeST SponsorsCountryOrRegionCode = "ST" // Sao Tome and Principe.
+	SponsorsCountryOrRegionCodeSA SponsorsCountryOrRegionCode = "SA" // Saudi Arabia.
+	SponsorsCountryOrRegionCodeSN SponsorsCountryOrRegionCode = "SN" // Senegal.
+	SponsorsCountryOrRegionCodeRS SponsorsCountryOrRegionCode = "RS" // Serbia.
+	SponsorsCountryOrRegionCodeSC SponsorsCountryOrRegionCode = "SC" // Seychelles.
+	SponsorsCountryOrRegionCodeSL SponsorsCountryOrRegionCode = "SL" // Sierra Leone.
+	SponsorsCountryOrRegionCodeSG SponsorsCountryOrRegionCode = "SG" // Singapore.
+	SponsorsCountryOrRegionCodeSX SponsorsCountryOrRegionCode = "SX" // Sint Maarten (Dutch part).
+	SponsorsCountryOrRegionCodeSK SponsorsCountryOrRegionCode = "SK" // Slovakia.
+	SponsorsCountryOrRegionCodeSI SponsorsCountryOrRegionCode = "SI" // Slovenia.
+	SponsorsCountryOrRegionCodeSB SponsorsCountryOrRegionCode = "SB" // Solomon Islands.
+	SponsorsCountryOrRegionCodeSO SponsorsCountryOrRegionCode = "SO" // Somalia.
+	SponsorsCountryOrRegionCodeZA SponsorsCountryOrRegionCode = "ZA" // South Africa.
+	SponsorsCountryOrRegionCodeGS SponsorsCountryOrRegionCode = "GS" // South Georgia and South Sandwich Islands.
+	SponsorsCountryOrRegionCodeSS SponsorsCountryOrRegionCode = "SS" // South Sudan.
+	SponsorsCountryOrRegionCodeES SponsorsCountryOrRegionCode = "ES" // Spain.
+	SponsorsCountryOrRegionCodeLK SponsorsCountryOrRegionCode = "LK" // Sri Lanka.
+	SponsorsCountryOrRegionCodeSD SponsorsCountryOrRegionCode = "SD" // Sudan.
+	SponsorsCountryOrRegionCodeSR SponsorsCountryOrRegionCode = "SR" // Suriname.
+	SponsorsCountryOrRegionCodeSJ SponsorsCountryOrRegionCode = "SJ" // Svalbard and Jan Mayen Islands.
+	SponsorsCountryOrRegionCodeSZ SponsorsCountryOrRegionCode = "SZ" // Swaziland.
+	SponsorsCountryOrRegionCodeSE SponsorsCountryOrRegionCode = "SE" // Sweden.
+	SponsorsCountryOrRegionCodeCH SponsorsCountryOrRegionCode = "CH" // Switzerland.
+	SponsorsCountryOrRegionCodeTW SponsorsCountryOrRegionCode = "TW" // Taiwan.
+	SponsorsCountryOrRegionCodeTJ SponsorsCountryOrRegionCode = "TJ" // Tajikistan.
+	SponsorsCountryOrRegionCodeTZ SponsorsCountryOrRegionCode = "TZ" // Tanzania.
+	SponsorsCountryOrRegionCodeTH SponsorsCountryOrRegionCode = "TH" // Thailand.
+	SponsorsCountryOrRegionCodeTL SponsorsCountryOrRegionCode = "TL" // Timor-Leste.
+	SponsorsCountryOrRegionCodeTG SponsorsCountryOrRegionCode = "TG" // Togo.
+	SponsorsCountryOrRegionCodeTK SponsorsCountryOrRegionCode = "TK" // Tokelau.
+	SponsorsCountryOrRegionCodeTO SponsorsCountryOrRegionCode = "TO" // Tonga.
+	SponsorsCountryOrRegionCodeTT SponsorsCountryOrRegionCode = "TT" // Trinidad and Tobago.
+	SponsorsCountryOrRegionCodeTN SponsorsCountryOrRegionCode = "TN" // Tunisia.
+	SponsorsCountryOrRegionCodeTR SponsorsCountryOrRegionCode = "TR" // Turkey.
+	SponsorsCountryOrRegionCodeTM SponsorsCountryOrRegionCode = "TM" // Turkmenistan.
+	SponsorsCountryOrRegionCodeTC SponsorsCountryOrRegionCode = "TC" // Turks and Caicos Islands.
+	SponsorsCountryOrRegionCodeTV SponsorsCountryOrRegionCode = "TV" // Tuvalu.
+	SponsorsCountryOrRegionCodeUG SponsorsCountryOrRegionCode = "UG" // Uganda.
+	SponsorsCountryOrRegionCodeUA SponsorsCountryOrRegionCode = "UA" // Ukraine.
+	SponsorsCountryOrRegionCodeAE SponsorsCountryOrRegionCode = "AE" // United Arab Emirates.
+	SponsorsCountryOrRegionCodeGB SponsorsCountryOrRegionCode = "GB" // United Kingdom.
+	SponsorsCountryOrRegionCodeUM SponsorsCountryOrRegionCode = "UM" // United States Minor Outlying Islands.
+	SponsorsCountryOrRegionCodeUS SponsorsCountryOrRegionCode = "US" // United States of America.
+	SponsorsCountryOrRegionCodeUY SponsorsCountryOrRegionCode = "UY" // Uruguay.
+	SponsorsCountryOrRegionCodeUZ SponsorsCountryOrRegionCode = "UZ" // Uzbekistan.
+	SponsorsCountryOrRegionCodeVU SponsorsCountryOrRegionCode = "VU" // Vanuatu.
+	SponsorsCountryOrRegionCodeVA SponsorsCountryOrRegionCode = "VA" // Vatican City.
+	SponsorsCountryOrRegionCodeVE SponsorsCountryOrRegionCode = "VE" // Venezuela.
+	SponsorsCountryOrRegionCodeVN SponsorsCountryOrRegionCode = "VN" // Vietnam.
+	SponsorsCountryOrRegionCodeVG SponsorsCountryOrRegionCode = "VG" // Virgin Islands, British.
+	SponsorsCountryOrRegionCodeVI SponsorsCountryOrRegionCode = "VI" // Virgin Islands, U.S.
+	SponsorsCountryOrRegionCodeWF SponsorsCountryOrRegionCode = "WF" // Wallis and Futuna Islands.
+	SponsorsCountryOrRegionCodeEH SponsorsCountryOrRegionCode = "EH" // Western Sahara.
+	SponsorsCountryOrRegionCodeYE SponsorsCountryOrRegionCode = "YE" // Yemen.
+	SponsorsCountryOrRegionCodeZM SponsorsCountryOrRegionCode = "ZM" // Zambia.
+	SponsorsCountryOrRegionCodeZW SponsorsCountryOrRegionCode = "ZW" // Zimbabwe.
+)
+
 // SponsorsGoalKind represents the different kinds of goals a GitHub Sponsors member can have.
 type SponsorsGoalKind string
 
@@ -1509,6 +2145,15 @@ type SponsorsGoalKind string
 const (
 	SponsorsGoalKindTotalSponsorsCount       SponsorsGoalKind = "TOTAL_SPONSORS_COUNT"       // The goal is about reaching a certain number of sponsors.
 	SponsorsGoalKindMonthlySponsorshipAmount SponsorsGoalKind = "MONTHLY_SPONSORSHIP_AMOUNT" // The goal is about getting a certain amount in USD from sponsorships each month.
+)
+
+// SponsorsListingFeaturedItemFeatureableType represents the different kinds of records that can be featured on a GitHub Sponsors profile page.
+type SponsorsListingFeaturedItemFeatureableType string
+
+// The different kinds of records that can be featured on a GitHub Sponsors profile page.
+const (
+	SponsorsListingFeaturedItemFeatureableTypeRepository SponsorsListingFeaturedItemFeatureableType = "REPOSITORY" // A repository owned by the user or organization with the GitHub Sponsors profile.
+	SponsorsListingFeaturedItemFeatureableTypeUser       SponsorsListingFeaturedItemFeatureableType = "USER"       // A user who belongs to the organization with the GitHub Sponsors profile.
 )
 
 // SponsorsTierOrderField represents properties by which Sponsors tiers connections can be ordered.
@@ -1543,6 +2188,25 @@ type SponsorshipPrivacy string
 const (
 	SponsorshipPrivacyPublic  SponsorshipPrivacy = "PUBLIC"  // Public.
 	SponsorshipPrivacyPrivate SponsorshipPrivacy = "PRIVATE" // Private.
+)
+
+// SquashMergeCommitMessage represents the possible default commit messages for squash merges.
+type SquashMergeCommitMessage string
+
+// The possible default commit messages for squash merges.
+const (
+	SquashMergeCommitMessagePrBody         SquashMergeCommitMessage = "PR_BODY"         // Default to the pull request's body.
+	SquashMergeCommitMessageCommitMessages SquashMergeCommitMessage = "COMMIT_MESSAGES" // Default to the branch's commit messages.
+	SquashMergeCommitMessageBlank          SquashMergeCommitMessage = "BLANK"           // Default to a blank commit message.
+)
+
+// SquashMergeCommitTitle represents the possible default commit titles for squash merges.
+type SquashMergeCommitTitle string
+
+// The possible default commit titles for squash merges.
+const (
+	SquashMergeCommitTitlePrTitle         SquashMergeCommitTitle = "PR_TITLE"           // Default to the pull request's title.
+	SquashMergeCommitTitleCommitOrPrTitle SquashMergeCommitTitle = "COMMIT_OR_PR_TITLE" // Default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
 )
 
 // StarOrderField represents properties by which star connections can be ordered.
@@ -1669,6 +2333,15 @@ const (
 	TopicSuggestionDeclineReasonTooGeneral         TopicSuggestionDeclineReason = "TOO_GENERAL"         // The suggested topic is too general for the repository.
 )
 
+// TrackedIssueStates represents the possible states of a tracked issue.
+type TrackedIssueStates string
+
+// The possible states of a tracked issue.
+const (
+	TrackedIssueStatesOpen   TrackedIssueStates = "OPEN"   // The tracked issue is open.
+	TrackedIssueStatesClosed TrackedIssueStates = "CLOSED" // The tracked issue is closed.
+)
+
 // UserBlockDuration represents the possible durations that a user can be blocked for.
 type UserBlockDuration string
 
@@ -1696,4 +2369,12 @@ type VerifiableDomainOrderField string
 const (
 	VerifiableDomainOrderFieldDomain    VerifiableDomainOrderField = "DOMAIN"     // Order verifiable domains by the domain name.
 	VerifiableDomainOrderFieldCreatedAt VerifiableDomainOrderField = "CREATED_AT" // Order verifiable domains by their creation date.
+)
+
+// WorkflowRunOrderField represents properties by which workflow run connections can be ordered.
+type WorkflowRunOrderField string
+
+// Properties by which workflow run connections can be ordered.
+const (
+	WorkflowRunOrderFieldCreatedAt WorkflowRunOrderField = "CREATED_AT" // Order workflow runs by most recently created.
 )
